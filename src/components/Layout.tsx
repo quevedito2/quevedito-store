@@ -1,0 +1,25 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+    <div className="min-h-screen flex flex-col bg-black text-white">
+        <header className="bg-neutral-900 p-4 flex justify-between items-center">
+            <h1 className="text-xl font-bold">Quevedito’s Store</h1>
+            <nav className="space-x-4">
+                <Link to="/" className="hover:underline">Inicio</Link>
+                <Link to="/tools" className="hover:underline">Herramientas</Link>
+                <Link to="/accessories" className="hover:underline">Accesorios</Link>
+            </nav>
+        </header>
+
+        <main className="flex-1 p-4 bg-gray-100 text-black">
+            {children}
+        </main>
+
+        <footer className="bg-neutral-900 text-white text-center p-2">
+            © 2025 Quevedito’s Store
+        </footer>
+    </div>
+);
+
+export default Layout;

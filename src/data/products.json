@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "Alienador de patilla de cambio",
+        "price": "S/ 280.00",
+        "category": "tools",
+        "image": "/assets/tools/alianeador-de-patilla-de-cambio.png"
+    },
+    {
+        "id": 2,
+        "name": "Prensa para Rodamientos",
+        "price": "S/ 320.00",
+        "category": "tools",
+        "image": "/assets/tools/prensa-para-rodamientos.png"
+    },
+    {
+        "id": 3,
+        "name": "Funda protectora para bicicleta cableado interno",
+        "price": "S/ 30.00",
+        "category": "accessories",
+        "image": "/assets/accessories/funda-protectora.png"
+    },
+    {
+        "id": 4,
+        "name": "Regulador de cable de cambio y freno (par)",
+        "price": "S/ 12.00",
+        "category": "accessories",
+        "image": "/assets/accessories/regulador-de-cable.webp"
+    }
+]
