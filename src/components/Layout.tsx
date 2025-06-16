@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <div className="min-h-screen flex flex-col bg-black text-white">
-        <header className="bg-neutral-900 p-4 flex justify-between items-center">
-            <h1 className="text-xl font-bold">Quevedito’s Store</h1>
+        <header className="sticky top-0 z-50 bg-neutral-900 p-4 flex justify-between items-center shadow-md">
+            <Link to="/" className="text-xl font-bold transition-transform duration-200 hover:scale-105"
+            >
+                Quevedito’s Store
+            </Link>
             <nav className="space-x-4">
                 <Link to="/" className="hover:underline">Inicio</Link>
                 <Link to="/tools" className="hover:underline">Herramientas</Link>
