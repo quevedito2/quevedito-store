@@ -1,10 +1,10 @@
 [
     {
         "id": 1,
-        "name": "Alienador de patilla de cambio",
+        "name": "Alineador de patilla de cambio",
         "price": "S/ 280.00",
         "category": "tools",
-        "image": "/assets/tools/alianeador-de-patilla-de-cambio.png"
+        "image": "/assets/tools/alineador-de-patilla-de-cambio.png"
     },
     {
         "id": 2,

@@ -6,7 +6,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
         <header className="sticky top-0 z-50 bg-neutral-900 p-4 flex justify-between items-center shadow-md">
             <Link to="/" className="text-xl font-bold transition-transform duration-200 hover:scale-105"
             >
-                Quevedito’s Store
+                Quevedito`s Store
             </Link>
             <nav className="space-x-4">
                 <Link to="/" className="hover:underline">Inicio</Link>
@@ -20,7 +20,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
         </main>
 
         <footer className="bg-neutral-900 text-white text-center p-2">
-            © 2025 Quevedito’s Store
+            © 2025 Quevedito`s Store
         </footer>
     </div>
 );
