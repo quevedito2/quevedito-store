@@ -1,13 +1,10 @@
 import React from "react";
 import Lottie from "lottie-react";
 import whatsappAnimation from "../assets/icons/whatsapp-lottie.json";
+import { WHATSAPP_PHONE, getGeneralMessage } from "../constants/whatsapp";
 
 const FloatingWhatsAppButton: React.FC = () => {
-  const phone = "+51956741343"; // tu número real
-  const message = encodeURIComponent(
-    "Hola, estoy interesado en tus herramientas de ciclismo."
-  );
-  const link = `https://wa.me/${phone}?text=${message}`;
+  const link = `https://wa.me/${WHATSAPP_PHONE}?text=${getGeneralMessage()}`;
 
   return (
     <a

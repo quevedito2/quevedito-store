@@ -1,10 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import Tools from './pages/Tools';
-import Accessories from './pages/Accessories';
 import FloatingWhatsAppButton from './components/FloatingWhatsAppButton';
 import ProductDetail from './components/ProductDetail';
+import ProductCategoryPage from './pages/ProductCategoryPage';
 
 function App() {
   return (
@@ -12,8 +11,8 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/tools" element={<Tools />} />
-          <Route path="/accessories" element={<Accessories />} />
+          <Route path="/tools" element={<ProductCategoryPage category='tools' title='Herramientas' />} />
+          <Route path="/accessories" element={<ProductCategoryPage category='accessories' title='Accesorios' />} />
           <Route path="/product/:id" element={<ProductDetail />} />
         </Routes>
         <FloatingWhatsAppButton />

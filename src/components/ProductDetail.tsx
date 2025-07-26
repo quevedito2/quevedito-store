@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
+import { getProductMessage, WHATSAPP_PHONE } from '../constants/whatsapp';
 
 interface Product {
     id: number;
@@ -36,9 +37,9 @@ const ProductDetail: React.FC = () => {
 
     const images = product.images || [product.image];
     const activeImage = images[activeImageIndex];
-    const phone = '+51956741343';
-    const message = encodeURIComponent(`Hola, estoy interesado en el producto "${product.name}" que vi en tu web.`);
-    const link = `https://wa.me/${phone}?text=${message}`;
+
+    const message = getProductMessage(product.name);
+    const link = `https://wa.me/${WHATSAPP_PHONE}?text=${message}`;
 
     const prevImage = () => {
         setActiveImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
