@@ -73,7 +73,17 @@ const ProductList: React.FC<ProductListProps> = ({
   }, [category, limit, searchTerm, minPrice, maxPrice, sortOrder]);
 
   if (products.length === 0) {
-    return <p className="text-gray-500">No hay productos disponibles.</p>;
+    return (
+      <div className="text-center text-gray-600 mt-10">
+        <img
+          src="/assets/no-results.png"
+          alt="Sin resultados"
+          className="mx-auto mb-4 w-40 h-40 opacity-70"
+        />
+        <p className="text-lg font-semibold">No se encontraron productos</p>
+        <p className="text-sm text-gray-500">Prueba ajustando los filtros o buscando otra palabra clave.</p>
+      </div>
+    );
   }
 
   return (
