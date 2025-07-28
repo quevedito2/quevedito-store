@@ -1,19 +1,16 @@
 import React from "react";
+import type { FilterOptions } from "../types/product";
 
-interface FilterBarProps {
-    search: string;
+interface FilterBarProps extends Pick<FilterOptions, "searchTerm" | "minPrice" | "maxPrice" | "sortOrder"> {
     setSearch: (value: string) => void;
-    minPrice?: number;
     setMinPrice: (value?: number) => void;
-    maxPrice?: number;
     setMaxPrice: (value?: number) => void;
-    sortOrder?: "asc" | "desc";
     setSortOrder: (value?: "asc" | "desc") => void;
     onClearFilters: () => void;
 }
 
 const FilterBar: React.FC<FilterBarProps> = ({
-    search,
+    searchTerm,
     setSearch,
     minPrice,
     setMinPrice,
@@ -29,7 +26,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
                 <input
                     type="text"
                     placeholder="Buscar producto..."
-                    value={search}
+                    value={searchTerm}
                     onChange={(e) => setSearch(e.target.value)}
                     className="p-2 border rounded w-full"
                 />

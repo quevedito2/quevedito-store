@@ -3,17 +3,7 @@ import { useParams } from 'react-router-dom';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 import { getProductMessage, WHATSAPP_PHONE } from '../constants/whatsapp';
-
-interface Product {
-    id: number;
-    name: string;
-    price: string;
-    category: string;
-    image: string;
-    images?: string[];
-    description?: string;
-    features?: string[];
-}
+import type { Product } from '../types/product';
 
 const ProductDetail: React.FC = () => {
     const { id } = useParams();
@@ -21,9 +11,12 @@ const ProductDetail: React.FC = () => {
     const [activeImageIndex, setActiveImageIndex] = useState(0);
 
     useEffect(() => {
+        const parsedId = Number(id);
+        if (isNaN(parsedId)) return;
+
         import('../data/products.json')
             .then((res) => {
-                const data = res.default.find((p: Product) => p.id === Number(id));
+                const data = res.default.find((p: Product) => p.id === parsedId);
                 if (data) {
                     setProduct(data);
                 } else {
@@ -68,7 +61,7 @@ const ProductDetail: React.FC = () => {
                         {/* Flecha izquierda */}
                         <button
                             onClick={prevImage}
-                            aria-label="Anterior"
+                            aria-label="Ver imagen anterior del producto"
                             className="absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-2xl font-bold text-gray-800 shadow w-9 h-9 rounded-full flex items-center justify-center transition"
                         >
                             ‹
@@ -77,7 +70,7 @@ const ProductDetail: React.FC = () => {
                         {/* Flecha derecha */}
                         <button
                             onClick={nextImage}
-                            aria-label="Siguiente"
+                            aria-label="Ver imagen siguiente del producto"
                             className="absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-2xl font-bold text-gray-800 shadow w-9 h-9 rounded-full flex items-center justify-center transition"
                         >
                             ›
@@ -123,7 +116,6 @@ const ProductDetail: React.FC = () => {
                     </a>
                 </div>
             </div>
-
         </div>
     );
 };

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import ProductList from "../components/ProductList";
 import FilterBar from "../components/FilterBar";
+import { ProductCategory } from "../types/product";
 
 interface Props {
-    category: "tools" | "accessories";
+    category: ProductCategory;
     title: string;
 }
 
 const ProductCategoryPage: React.FC<Props> = ({ category, title }) => {
-    const [search, setSearch] = useState("");
+    const [searchTerm, setSearch] = useState("");
     const [minPrice, setMinPrice] = useState<number | undefined>();
     const [maxPrice, setMaxPrice] = useState<number | undefined>();
     const [sortOrder, setSortOrder] = useState<"asc" | "desc" | undefined>();
@@ -24,7 +25,7 @@ const ProductCategoryPage: React.FC<Props> = ({ category, title }) => {
         <h2 className="text-2xl font-bold mb-4">{title}</h2>
 
         <FilterBar
-            search={search}
+            searchTerm={searchTerm}
             setSearch={setSearch}
             minPrice={minPrice}
             setMinPrice={setMinPrice}
@@ -37,7 +38,7 @@ const ProductCategoryPage: React.FC<Props> = ({ category, title }) => {
 
         <ProductList
             category={category}
-            searchTerm={search}
+            searchTerm={searchTerm}
             minPrice={minPrice}
             maxPrice={maxPrice}
             sortOrder={sortOrder}

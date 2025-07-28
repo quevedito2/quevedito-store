@@ -1,23 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { motion } from "framer-motion";
+import { filterProducts } from "../utils/filterProducts";
+import type { FilterOptions, Product } from "../types/product";
 
-interface Product {
-  id: number;
-  name: string;
-  price: string;
-  category: string;
-  image: string;
-}
-
-interface ProductListProps {
-  category?: string;
-  limit?: number;
-  searchTerm?: string;
-  minPrice?: number;
-  maxPrice?: number;
-  sortOrder?: "asc" | "desc";
-}
+type ProductListProps = FilterOptions;
 
 const ProductList: React.FC<ProductListProps> = ({
   category,
@@ -32,42 +19,16 @@ const ProductList: React.FC<ProductListProps> = ({
   useEffect(() => {
     import("../data/products.json")
       .then((res) => {
-        let data = res.default;
-
-        if (category) {
-          data = data.filter((p) => p.category === category);
-        }
-
-        if (searchTerm) {
-          data = data.filter((p) =>
-            p.name.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-        }
-        if (minPrice !== undefined) {
-          data = data.filter(
-            (p) => parseFloat(p.price.replace("S/ ", "")) >= minPrice
-          );
-        }
-
-        if (maxPrice !== undefined) {
-          data = data.filter(
-            (p) => parseFloat(p.price.replace("S/ ", "")) <= maxPrice
-          );
-        }
-
-        if (limit) {
-          data = data.slice(-limit);
-        }
-
-        if (sortOrder) {
-          data = data.sort((a, b) => {
-            const priceA = parseFloat(a.price.replace("S/ ", ""));
-            const priceB = parseFloat(b.price.replace("S/ ", ""));
-            return sortOrder === "asc" ? priceA - priceB : priceB - priceA;
-          });
-        }
-
-        setProducts(data);
+        const data = res.default;
+        const filtered = filterProducts(data, {
+          category,
+          limit,
+          searchTerm,
+          minPrice,
+          maxPrice,
+          sortOrder,
+        });
+        setProducts(filtered);
       })
       .catch((err) => console.error("Error loading products:", err));
   }, [category, limit, searchTerm, minPrice, maxPrice, sortOrder]);
@@ -81,13 +42,15 @@ const ProductList: React.FC<ProductListProps> = ({
           className="mx-auto mb-4 w-40 h-40 opacity-70"
         />
         <p className="text-lg font-semibold">No se encontraron productos</p>
-        <p className="text-sm text-gray-500">Prueba ajustando los filtros o buscando otra palabra clave.</p>
+        <p className="text-sm text-gray-500">
+          Prueba ajustando los filtros o buscando otra palabra clave.
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {products.map((product, index) => (
         <motion.div
           key={product.id}

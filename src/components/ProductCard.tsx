@@ -20,9 +20,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ id, name, price, image }) => 
       onClick={handleClick}
       className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 cursor-pointer"
     >
-      <img src={image} alt={name} className="w-full h-48 object-cover" />
-      <div className="p-4">
-        <h3 className="font-bold text-lg text-gray-800">{name}</h3>
+      <img src={image} alt={name} className="w-full h-40 sm:h-48 object-cover" />
+      <div className="p-3 sm:p-4">
+        <h3 className="font-bold text-lg text-gray-800 line-clamp-2">{name}</h3>
         <p className="text-gray-600">{price}</p>
       </div>
     </div>

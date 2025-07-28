@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ROUTES } from '../constants/routes';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <div className="min-h-screen flex flex-col bg-black text-white">
@@ -9,9 +10,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
                 Quevedito`s Store
             </Link>
             <nav className="space-x-4">
-                <Link to="/" className="hover:underline">Inicio</Link>
-                <Link to="/tools" className="hover:underline">Herramientas</Link>
-                <Link to="/accessories" className="hover:underline">Accesorios</Link>
+                <Link to={ROUTES.home} className="hover:underline">Inicio</Link>
+                <Link to={ROUTES.tools} className="hover:underline">Herramientas</Link>
+                <Link to={ROUTES.accessories} className="hover:underline">Accesorios</Link>
             </nav>
         </header>
 
